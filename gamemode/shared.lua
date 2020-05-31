@@ -1,9 +1,7 @@
 AddCSLuaFile()
 
-GM.Name 		= ""
-GM.Author 		= ""
-GM.Email 		= ""
-GM.Website 		= ""
+GM.Name 		= "GLoonz TD"
+GM.Author 		= "Jumpz"
 
 function recursiveInclusion( scanDirectory, isGamemode )
 	-- Null-coalescing for optional argument
@@ -21,7 +19,7 @@ function recursiveInclusion( scanDirectory, isGamemode )
 			
 			-- Include files within this directory
 			for _, fileName in pairs( files ) do
-				if fileName != "shared.lua" and fileName != "init.lua" and fileName != "cl_init.lua" then
+				if fileName ~= "shared.lua" and fileName ~= "init.lua" and fileName ~= "cl_init.lua" then
 					-- print( "Found: ", fileName )
 					
 					-- Create a relative path for inclusion functions

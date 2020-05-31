@@ -1,5 +1,5 @@
 "gamemodename"
 {
-	"title"	"Gamemode Name"
+	"title"	"Gloonz TD"
 	"base"	"base"
 }

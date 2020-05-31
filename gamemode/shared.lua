@@ -3,6 +3,8 @@ AddCSLuaFile()
 GM.Name 		= "GLoonz TD"
 GM.Author 		= "Jumpz"
 
+gloonz = gloonz or {}
+
 function recursiveInclusion( scanDirectory, isGamemode )
 	-- Null-coalescing for optional argument
 	isGamemode = isGamemode or false

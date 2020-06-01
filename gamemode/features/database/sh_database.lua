@@ -9,6 +9,11 @@ hook.Add("PostGamemodeLoaded", "CreatePlayerTable", function()
             },
 
             {
+                name = "name",
+                type = "varchar"
+            },
+
+            {
                 name = "level",
                 type = "int"
             },

@@ -48,6 +48,32 @@ gloonz.database.createTable = function(tableName, fields)
 
 end
 
+gloonz.database.insertToTable = function (tableName, ...)
+
+    local args = {...}
+    local query = ""
+
+    for k, v in pairs(args) do
+
+        query = query .. v
+
+        if k ~= #args then
+
+            query = query .. ", "
+
+        end
+
+    end
+    
+    gloonz.database.connect()
+
+    local run = gloonz_database:query("INSERT INTO " .. tableName .. " VALUES(" .. query .. ")")
+    run.onSuccess = function(q, data) print("Query: " .. q .. " was successful") print(data) gloonz.database.disconnect() end
+    run.onError = function(q, e) print("An error happened with query: " .. q .. "\n".. e) gloonz.database.disconnect() end
+    run:start()
+    
+end
+
 gloonz.database.query = function(query, callback)
 
     gloonz.database.connect()

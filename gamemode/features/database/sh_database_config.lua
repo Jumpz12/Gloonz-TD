@@ -78,7 +78,18 @@ gloonz.database.updateTable = function(tableName, steamID, column, newValue)
 
     gloonz.database.connect()
 
-    local run = gloonz_database:query("UPDATE " .. tableName .. " SET " .. column .. " = " .. newValue .. " WHERE steamid = " .. steamID)
+    local run = gloonz_database:query("UPDATE " .. tableName .. " SET " .. column .. " = '" .. newValue .. "' WHERE steamid = '" .. steamID .. "'")
+    run.onSuccess = function(q, data) print("Query: " .. q .. " was successful") print(data) gloonz.database.disconnect() end
+    run.onError = function(q, e) print("An error happened with query: " .. q .. "\n".. e) gloonz.database.disconnect() end
+    run:start()
+
+end
+
+gloonz.database.resetCharacter = function(steamID)
+
+    gloonz.database.connect()
+
+    local run = gloonz_database:query("UPDATE players SET level = '0', xp = '0', money = '0' WHERE steamID = '" .. steamID .. "'")
     run.onSuccess = function(q, data) print("Query: " .. q .. " was successful") print(data) gloonz.database.disconnect() end
     run.onError = function(q, e) print("An error happened with query: " .. q .. "\n".. e) gloonz.database.disconnect() end
     run:start()

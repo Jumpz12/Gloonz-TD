@@ -48,7 +48,7 @@ gloonz.database.createTable = function(tableName, fields)
 
 end
 
-gloonz.database.insertToTable = function (tableName, ...)
+gloonz.database.insertToTable = function(tableName, ...)
 
     local args = {...}
     local query = ""
@@ -72,6 +72,17 @@ gloonz.database.insertToTable = function (tableName, ...)
     run.onError = function(q, e) print("An error happened with query: " .. q .. "\n".. e) gloonz.database.disconnect() end
     run:start()
     
+end
+
+gloonz.database.updateTable = function(tableName, steamID, column, newValue)
+
+    gloonz.database.connect()
+
+    local run = gloonz_database:query("UPDATE " .. tableName .. " SET " .. column .. " = " .. newValue .. " WHERE steamid = " .. steamID)
+    run.onSuccess = function(q, data) print("Query: " .. q .. " was successful") print(data) gloonz.database.disconnect() end
+    run.onError = function(q, e) print("An error happened with query: " .. q .. "\n".. e) gloonz.database.disconnect() end
+    run:start()
+
 end
 
 gloonz.database.query = function(query, callback)

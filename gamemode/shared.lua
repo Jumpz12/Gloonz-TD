@@ -5,6 +5,13 @@ GM.Author 		= "Jumpz"
 
 gloonz = gloonz or {}
 
+team.SetUp(1, "Undecided", Color(0, 0, 0, 255))
+team.SetUp(2, "Player 1", Color(255, 0, 0, 255))
+team.SetUp(3, "Player 2", Color(0, 255, 0, 255))
+team.SetUp(4, "Player 3", Color(0, 0, 255, 255))
+team.SetUp(5, "Player 4", Color(252, 215, 3, 255))
+team.SetUp(6, "Spectator", Color(117, 112, 111, 255))
+
 function recursiveInclusion( scanDirectory, isGamemode )
 	-- Null-coalescing for optional argument
 	isGamemode = isGamemode or false
